@@ -49,4 +49,5 @@ Example, reading a TMP36 using analog.py, then printing the data on the display 
     > done
 
 Image of the Sparkfun 2 Line x 16 char LCD. 
+![alt tag](https://raw.githubusercontent.com/joemcmanus/lcd/master/TwoLineLCD.png)
 
