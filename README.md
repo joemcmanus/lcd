@@ -47,3 +47,6 @@ Example, reading a TMP36 using analog.py, then printing the data on the display 
     >   ./lcd.py `./analog.py 1 --quiet --count=1 --temp` "`date +'%b %d %H:%M %p'`"
     >   sleep 30
     > done
+
+Image of the Sparkfun 2 Line x 16 char LCD. 
+
