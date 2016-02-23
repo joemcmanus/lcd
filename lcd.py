@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # File    : lcd.py  A very simple LCD script for Galileo Gen 2
 # Author  : Joe McManus josephmc@alumni.cmu.edu
-# Version : 0.1  02/22/2016
+# Version : 0.2  02/23/2016
 # Copyright (C) 2016 Joe McManus
 #
 # This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,8 @@ import argparse
 import subprocess
 
 parser = argparse.ArgumentParser(description='Simple LCD Display Script for Galileo')
-parser.add_argument('message', help="The message you want to display on the LCD", type=str)
+parser.add_argument('lineOne', help="The message you want to display on line 1 of the LCD", type=str)
+parser.add_argument('lineTwo', help="The message you want to display on line 2 of the LCD", type=str, nargs='?')
 parser.add_argument('--version', action='version',version='%(prog)s 0.2')
 args=parser.parse_args()
 
@@ -53,6 +54,10 @@ lcd.write(b"\xFE\x80")
 
 print("Sending your message to /dev/ttyS0")
 #Write a message
-lcd.write(args.message)
+lcd.write(args.lineOne)
+
+if args.lineTwo:
+	lcd.write(b"\xFE\xC0")
+	lcd.write(args.lineTwo)
 
 quit()

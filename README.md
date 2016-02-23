@@ -22,12 +22,13 @@ Usage:
 
     #Display help
     root@galileo:~# ./lcd.py --help
-    usage: lcd.py [-h] [--version] message
+    usage: lcd.py [-h] [--version] lineOne [lineTwo]
     
     Simple LCD Display Script for Galileo
     
     positional arguments:
-      message     The message you want to display on the LCD
+      lineOne     The message you want to display on line 1 of the LCD
+      lineTwo     The message you want to display on line 2 of the LCD
     
     optional arguments:
       -h, --help  show this help message and exit
@@ -39,3 +40,10 @@ Example, reading a TMP36 using analog.py and printing the temperature on the dis
     Setting up GPIO Pins
     Sending your message to /dev/ttyS0
 
+Example, reading a TMP36 ysing analog.py, then printing the data on the display every 30 seconds.
+    
+    root@galileo:~# while [ 1 ]
+    > do
+    >   ./lcd.py `./analog.py 1 --quiet --count=1 --temp` "`date +'%b %d %H:%M %p'`"
+    >   sleep 30
+    > done
