@@ -20,6 +20,7 @@
 import os
 import serial
 import argparse
+import subprocess
 
 parser = argparse.ArgumentParser(description='Simple LCD Display Script for Galileo')
 parser.add_argument('message', help="The message you want to display on the LCD", type=str)
@@ -30,10 +31,11 @@ args=parser.parse_args()
 def setPins(pin, mode):
 	pin=str(pin)
 	mode=str(mode)
-	os.system('echo -n "' + pin + '" > /sys/class/gpio/export')
-	os.system('echo -n "out" > /sys/class/gpio/gpio' + pin + '/direction')
-	os.system('echo -n "' + mode + '" > /sys/class/gpio/gpio' + pin + '/value')
+	fixGpio=subprocess.check_output(['/bin/echo' , '-n', pin, '>', '/sys/class/export'])
+	fixGpio=subprocess.check_output(['/bin/echo', '-n', 'out', '>', '/sys/class/gpio/gpio' + pin + '/direction'])
+	fixGpio=subprocess.check_output(['/bin/echo', '-n', 'mode', '>', '/sys/class/gpio/gpio' + pin + '/value'])
 
+print("Setting up GPIO Pins")
 setPins(28, 0) 
 setPins(32, 1) 
 setPins(33, 1)
@@ -49,6 +51,8 @@ lcd.write(b"                ");
 #Move to first line
 lcd.write(b"\xFE\x80")
 
+print("Sending your message to /dev/ttyS0")
 #Write a message
 lcd.write(args.message)
 
+quit()
