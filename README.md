@@ -40,7 +40,7 @@ Example, reading a TMP36 using analog.py and printing the temperature on the dis
     Setting up GPIO Pins
     Sending your message to /dev/ttyS0
 
-Example, reading a TMP36 ysing analog.py, then printing the data on the display every 30 seconds.
+Example, reading a TMP36 using analog.py, then printing the data on the display every 30 seconds.
     
     root@galileo:~# while [ 1 ]
     > do
