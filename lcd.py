@@ -33,7 +33,7 @@ def setPins(pin, mode):
 	mode=str(mode)
 	fixGpio=subprocess.check_output(['/bin/echo' , '-n', pin, '>', '/sys/class/export'])
 	fixGpio=subprocess.check_output(['/bin/echo', '-n', 'out', '>', '/sys/class/gpio/gpio' + pin + '/direction'])
-	fixGpio=subprocess.check_output(['/bin/echo', '-n', 'mode', '>', '/sys/class/gpio/gpio' + pin + '/value'])
+	fixGpio=subprocess.check_output(['/bin/echo', '-n', mode, '>', '/sys/class/gpio/gpio' + pin + '/value'])
 
 print("Setting up GPIO Pins")
 setPins(28, 0) 
