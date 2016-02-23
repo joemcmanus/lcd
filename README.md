@@ -14,11 +14,13 @@ You will need to install PySerial
 
 
 Usage:
-
-    ./lcd.py "Hello World"
+    
+    #Send the message Hello World
+    root@galileo:~# ./lcd.py "Hello World"
     Setting up GPIO Pins
     Sending your message to /dev/ttyS0
 
+    #Display help
     root@galileo:~# ./lcd.py --help
     usage: lcd.py [-h] [--version] message
     
