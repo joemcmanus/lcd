@@ -30,3 +30,9 @@ Usage:
     optional arguments:
       -h, --help  show this help message and exit
       --version   show program's version number and exit
+
+Example, reading a TMP36 using analog.py and printing the temperature on the display. 
+    root@galileo:~# ./analog.py 1 --quiet --count=1 --temp | xargs ./lcd.py 
+    Setting up GPIO Pins
+    Sending your message to /dev/ttyS0
+
