@@ -48,6 +48,10 @@ Example, reading a TMP36 using analog.py, then printing the data on the display 
     >   sleep 30
     > done
 
+Possible Wiring:
+![alt tag](https://raw.githubusercontent.com/joemcmanus/lcd/master/GalileoGen2-SerialLCD_bb.png)
+
+
 Image of the Sparkfun 2 Line x 16 char LCD. 
 ![alt tag](https://raw.githubusercontent.com/joemcmanus/lcd/master/TwoLineLCD.png)
 
