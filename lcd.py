@@ -32,9 +32,11 @@ args=parser.parse_args()
 def setPins(pin, mode):
 	pin=str(pin)
 	mode=str(mode)
-	fh=open("/sys/class/gpio/export", "w")
-	fh.write(pin)
-	fh.close()
+
+	if not os.path.isdir('/sys/class/gpio/gpio' + pin):
+		fh=open("/sys/class/gpio/export", "w")
+		fh.write(pin)
+		fh.close()
 
 	fh=open('/sys/class/gpio/gpio' + pin + '/direction', "w")
 	fh.write('out')
