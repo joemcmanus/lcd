@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # File    : lcd.py  A very simple LCD script for Galileo Gen 2
 # Author  : Joe McManus josephmc@alumni.cmu.edu
-# Version : 0.2  02/23/2016
+# Version : 0.3  04/05/2016
 # Copyright (C) 2016 Joe McManus
 #
 # This program is free software: you can redistribute it and/or modify
@@ -32,9 +32,17 @@ args=parser.parse_args()
 def setPins(pin, mode):
 	pin=str(pin)
 	mode=str(mode)
-	fixGpio=subprocess.check_output(['/bin/echo' , '-n', pin, '>', '/sys/class/export'])
-	fixGpio=subprocess.check_output(['/bin/echo', '-n', 'out', '>', '/sys/class/gpio/gpio' + pin + '/direction'])
-	fixGpio=subprocess.check_output(['/bin/echo', '-n', mode, '>', '/sys/class/gpio/gpio' + pin + '/value'])
+	fh=open("/sys/class/gpio/export", "w")
+	fh.write(pin)
+	fh.close()
+
+	fh=open('/sys/class/gpio/gpio' + pin + '/direction', "w")
+	fh.write('out')
+	fh.close()
+
+	fh=open('/sys/class/gpio/gpio' + pin + '/value', "w")
+	fh.write(mode)
+	fh.close()
 
 print("Setting up GPIO Pins")
 setPins(28, 0) 
